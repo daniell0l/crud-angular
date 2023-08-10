@@ -1,33 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Cadastro } from '../models/cadastro';
+import { CadastroService } from '../services/cadastro.service';
 
 @Component({
   selector: 'app-pessoas',
   templateUrl: './pessoas.component.html',
-  styleUrls: ['./pessoas.component.scss']
+  styleUrls: ['./pessoas.component.scss'],
 })
 export class PessoasComponent implements OnInit {
-
-  cadastro: Cadastro[] = [
-    {
-      _id: 1,
-      name: 'teste',
-      street: 'rua a',
-      city: 'cidade a',
-      state: 'estado a',
-      neighborhood: 'bairro a',
-      number: '123',
-      zipCode: '47000000',
-    }
+  cadastro: Observable<Cadastro[]>;
+  displayedColumns = [
+    'name',
+    'street',
+    'city',
+    'state',
+    'neighborhood',
+    'number',
+    'zipCode',
   ];
 
-  displayedColumns = ['name', 'street', 'city', 'state', 'neighborhood', 'number', 'zipCode'];
-
-  constructor() {
-
+  constructor(private cadastroService: CadastroService) {
+    this.cadastro = this.cadastroService.list();
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 }
