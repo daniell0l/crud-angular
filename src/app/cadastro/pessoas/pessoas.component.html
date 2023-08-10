@@ -1,1 +1,49 @@
-<p>pessoas works!</p>
+<mat-card>
+  <mat-card-content>
+
+    <mat-toolbar color="primary">
+     Endereços Disponíveis
+    </mat-toolbar>
+
+    <table mat-table [dataSource]="cadastro" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let cadastro"> {{cadastro.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="street">
+        <th mat-header-cell *matHeaderCellDef> Rua </th>
+        <td mat-cell *matCellDef="let cadastro"> {{cadastro.street}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> Cidade </th>
+        <td mat-cell *matCellDef="let cadastro"> {{cadastro.city}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let cadastro"> {{cadastro.state}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="neighborhood">
+        <th mat-header-cell *matHeaderCellDef> Bairro </th>
+        <td mat-cell *matCellDef="let cadastro"> {{cadastro.neighborhood}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="number">
+        <th mat-header-cell *matHeaderCellDef> Numero </th>
+        <td mat-cell *matCellDef="let cadastro"> {{cadastro.number}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="zipCode">
+        <th mat-header-cell *matHeaderCellDef> Cep </th>
+        <td mat-cell *matCellDef="let cadastro"> {{cadastro.zipCode}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
